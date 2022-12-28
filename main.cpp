@@ -1340,7 +1340,7 @@ void animate()
 	if (moveLeft == true)
 	{
 	    if(carFlag == true){
-            carXval-=0.1;
+            carXval-=0.05;
             if(carXval < -100){
             carXval = 50;
             }
@@ -1352,9 +1352,9 @@ void animate()
             }
 		}
         if(sunFlag == true){
-            sunYval -= 0.01;
+            sunYval -= 0.02;
             if(sunYval < -50){
-                sunYval = 40;
+                sunYval = 20;
             }
         }
 
@@ -1370,26 +1370,26 @@ void animate()
 	if (moveRight == true)
 	{
 	    if(carFlag == true){
-            carXval+=0.1;
+            carXval+=0.05;
             if(carXval > 50){
                 carXval = -100;
             }
 	    }
 		if(boatFlag == true){
-            boatXval += 0.1;
+            boatXval += 0.05;
             if(boatXval > 90){
                 boatXval = -100;
             }
 		}
 
         if(sunFlag == true){
-            sunYval += 0.1;
+            sunYval += 0.02;
             if(sunYval > 20){
                 sunYval = -50;
             }
         }
         if(cloudFlag == true){
-            cloudXval += 0.1;
+            cloudXval += 0.03;
             if(cloudXval > 120){
                 cloudXval = -80;
             }
