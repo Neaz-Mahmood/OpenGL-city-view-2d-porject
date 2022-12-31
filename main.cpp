@@ -833,7 +833,7 @@ void stars()
 }
 
 
-void StartingText()
+void front_page()
 {
     char text[120];
 
@@ -850,7 +850,7 @@ void StartingText()
         else glutBitmapCharacter(GLUT_BITMAP_TIMES_ROMAN_24, text[i]);
     }
 
-    sprintf(text, "VILLAGE SCENARIO",5.00,8.00);
+    sprintf(text, "Final Project Presentation",5.00,8.00);
     glColor3f(1, 1, 0);
     glRasterPos2f( -20 , 45 );
     for(int i = 0; text[i] != '\0'; i++)
@@ -924,7 +924,7 @@ void StartingText()
         else glutBitmapCharacter(GLUT_BITMAP_TIMES_ROMAN_24, text[i]);
     }
                 sprintf(text, "PRESS 'd' FOR DAY MODE",5.00,8.00);
-    glColor3f(1, 1, 1);
+    glColor3f(0, 0, 0);
     glRasterPos2f( -20 , 0 );
     for(int i = 0; text[i] != '\0'; i++)
     {
@@ -935,9 +935,21 @@ void StartingText()
         }
         else glutBitmapCharacter(GLUT_BITMAP_TIMES_ROMAN_24, text[i]);
     }
-        sprintf(text, " PRESS 'n' FOR NIGHT MODE",5.00,8.00);
-    glColor3f(1, 1, 1);
-    glRasterPos2f( -21 , -5 );
+        sprintf(text, "PRESS 'n' FOR NIGHT MODE",5.00,8.00);
+    glColor3f(0, 0, 0);
+    glRasterPos2f( -20 , -5 );
+    for(int i = 0; text[i] != '\0'; i++)
+    {
+        if(text[i]==' '  && text[i+1]==' ')
+        {
+            glutBitmapCharacter(GLUT_BITMAP_TIMES_ROMAN_24, text[i]);
+            glRasterPos2f( -32 , 02 );
+        }
+        else glutBitmapCharacter(GLUT_BITMAP_TIMES_ROMAN_24, text[i]);
+    }
+    sprintf(text, "PRESS 'f' FOR FRONT WINDOW",5.00,8.00);
+    glColor3f(0, 0, 0);
+    glRasterPos2f( -20 , -10 );
     for(int i = 0; text[i] != '\0'; i++)
     {
         if(text[i]==' '  && text[i+1]==' ')
@@ -948,9 +960,9 @@ void StartingText()
         else glutBitmapCharacter(GLUT_BITMAP_TIMES_ROMAN_24, text[i]);
     }
 
-     sprintf(text, " PRESS 'r' FOR SET THE DIRECTION TO RIGHT",5.00,8.00);
-    glColor3f(1, 1, 1);
-    glRasterPos2f( -21 , -10 );
+     sprintf(text, "PRESS 'r' FOR SET THE DIRECTION TO RIGHT",5.00,8.00);
+    glColor3f(0, 0, 0);
+    glRasterPos2f( -20 , -15 );
     for(int i = 0; text[i] != '\0'; i++)
     {
         if(text[i]==' '  && text[i+1]==' ')
@@ -960,9 +972,9 @@ void StartingText()
         }
         else glutBitmapCharacter(GLUT_BITMAP_TIMES_ROMAN_24, text[i]);
     }
-    sprintf(text, " PRESS 'l' FOR SET THE DIRECTION TO LEFT",5.00,8.00);
-    glColor3f(1, 1, 1);
-    glRasterPos2f( -21 , -15 );
+    sprintf(text, "PRESS 'l' FOR SET THE DIRECTION TO LEFT",5.00,8.00);
+    glColor3f(0, 0, 0);
+    glRasterPos2f( -20 , -20 );
     for(int i = 0; text[i] != '\0'; i++)
     {
         if(text[i]==' '  && text[i+1]==' ')
@@ -972,9 +984,9 @@ void StartingText()
         }
         else glutBitmapCharacter(GLUT_BITMAP_TIMES_ROMAN_24, text[i]);
     }
-    sprintf(text, " PRESS '1'(ONE) TO MOVE THE CAR",5.00,8.00);
-    glColor3f(1, 1, 1);
-    glRasterPos2f( -21 , -20 );
+    sprintf(text, "PRESS '1'(ONE) TO MOVE THE CAR",5.00,8.00);
+    glColor3f(0, 0, 0);
+    glRasterPos2f( -20 , -25 );
     for(int i = 0; text[i] != '\0'; i++)
     {
         if(text[i]==' '  && text[i+1]==' ')
@@ -984,9 +996,9 @@ void StartingText()
         }
         else glutBitmapCharacter(GLUT_BITMAP_TIMES_ROMAN_24, text[i]);
     }
-    sprintf(text, " PRESS '2' TO MOVE THE BOAT",5.00,8.00);
-    glColor3f(1, 1, 1);
-    glRasterPos2f( -21 , -25 );
+    sprintf(text, "PRESS '2' TO MOVE THE BOAT",5.00,8.00);
+    glColor3f(0, 0, 0);
+    glRasterPos2f( -20 , -30 );
     for(int i = 0; text[i] != '\0'; i++)
     {
         if(text[i]==' '  && text[i+1]==' ')
@@ -996,9 +1008,9 @@ void StartingText()
         }
         else glutBitmapCharacter(GLUT_BITMAP_TIMES_ROMAN_24, text[i]);
     }
-    sprintf(text, " PRESS '3' TO MOVE THE CLOUD",5.00,8.00);
-    glColor3f(1, 1, 1);
-    glRasterPos2f( -21 , -30 );
+    sprintf(text, "PRESS '3' TO MOVE THE CLOUD",5.00,8.00);
+    glColor3f(0, 0, 0);
+    glRasterPos2f( -20 , -35 );
     for(int i = 0; text[i] != '\0'; i++)
     {
         if(text[i]==' '  && text[i+1]==' ')
@@ -1008,9 +1020,9 @@ void StartingText()
         }
         else glutBitmapCharacter(GLUT_BITMAP_TIMES_ROMAN_24, text[i]);
     }
-    sprintf(text, " PRESS '4' TO MOVE THE SUN/MOVE",5.00,8.00);
-    glColor3f(1, 1, 1);
-    glRasterPos2f( -21 , -35 );
+    sprintf(text, "PRESS '4' TO MOVE THE SUN/MOVE",5.00,8.00);
+    glColor3f(0, 0, 0);
+    glRasterPos2f( -20 , -40 );
     for(int i = 0; text[i] != '\0'; i++)
     {
         if(text[i]==' '  && text[i+1]==' ')
@@ -1020,9 +1032,9 @@ void StartingText()
         }
         else glutBitmapCharacter(GLUT_BITMAP_TIMES_ROMAN_24, text[i]);
     }
-    sprintf(text, " PRESS 's' TO STOP MOVEMENT",5.00,8.00);
-    glColor3f(1, 1, 1);
-    glRasterPos2f( -21 , -40 );
+    sprintf(text, "PRESS 's' TO STOP MOVEMENT",5.00,8.00);
+    glColor3f(0, 0, 0);
+    glRasterPos2f( -20 , -45 );
     for(int i = 0; text[i] != '\0'; i++)
     {
         if(text[i]==' '  && text[i+1]==' ')
@@ -1255,14 +1267,14 @@ void day(void)
 void display()
 {
     glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT);
-    glClearColor(0,0,0,0);
+    glClearColor(1,1,1,0);
     glMatrixMode( GL_PROJECTION );
     glLoadIdentity();
     gluOrtho2D(-70,70,-50,50);
-    glMatrixMode( GL_MODELVIEW );
-    glLoadIdentity();
+    //glMatrixMode( GL_MODELVIEW );
+    //glLoadIdentity();
     glPushMatrix();
-    StartingText();
+    front_page();
     glEnd();
     glPopMatrix();
      glFlush();
@@ -1285,7 +1297,7 @@ void myKeyboardFunc( unsigned char key, int x, int y )
             glutCreateWindow("Day in village");
             glutKeyboardFunc(myKeyboardFunc);
             glutDisplayFunc(day);
-              break;
+            break;
 
         case 'n':
             glutDestroyWindow(1);
@@ -1294,6 +1306,17 @@ void myKeyboardFunc( unsigned char key, int x, int y )
             glutCreateWindow("Night in village");
             glutKeyboardFunc(myKeyboardFunc);
             glutDisplayFunc(night);
+
+            glutPostRedisplay();
+            break;
+
+        case 'f':
+            glutDestroyWindow(1);
+            glutInitWindowSize(windowWidth, windowHeight);
+
+            glutCreateWindow("Front Page");
+            glutKeyboardFunc(myKeyboardFunc);
+            glutDisplayFunc(display);
 
             glutPostRedisplay();
             break;
@@ -1409,7 +1432,7 @@ glutInitWindowSize(windowWidth, windowHeight);
 glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB | GLUT_DEPTH);
 glutInitDisplayMode(GLUT_DOUBLE); // Enable double buffered mode
 
-glutInitWindowPosition(8,10);
+glutInitWindowPosition(0, 0);
 
 glutCreateWindow("Neaz Village");
 glShadeModel( GL_SMOOTH );
@@ -1420,8 +1443,7 @@ glutKeyboardFunc(myKeyboardFunc);
 glutIdleFunc(animate);
 
 
-glutDisplayFunc(day);
-glutDisplayFunc(night);
+
 glutDisplayFunc(display);
 
 
