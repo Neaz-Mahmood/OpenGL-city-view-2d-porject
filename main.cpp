@@ -7,10 +7,10 @@
 #include <math.h>
 
 double windowWidth= 2000, windowHeight = 800;
-bool carFlag = false, sunFlag = false, boatFlag = false, cloudFlag = false;
+bool carFlag = false, sunFlag = false, boatFlag = false, cloudFlag = false, fanFlag = false;
 bool moveRight=false, moveLeft = false;
 double carXval = 0, boatXval = 0, cloudXval = 0, sunYval = 0;
-
+float fanAngle = 0.0f;
 
 void drawCircle(double x, double y, double s){
 
@@ -24,6 +24,103 @@ void drawCircle(double x, double y, double s){
 
         }
     glEnd();
+}
+
+
+void windmill()
+{
+    ///windmill structure///
+    glBegin(GL_POLYGON);// Draw a Red 1x1 Square centered at origin
+    glColor3ub(192,192,192);
+    //glColor3ub(0,206,209);
+
+    glVertex2f(31.0f,2.0f);
+    glVertex2f(30.0f,-6.0f);
+    glVertex2f(34.0f,-6.0f);
+    glVertex2f(33.0f,2.0f);
+    glVertex2f(32.5f,3.0f);
+    glVertex2f(31.5f,3.0f);
+
+
+
+    glEnd();
+
+
+     //circle//
+    glPushMatrix();
+    glColor3ub(0,0,0);
+    glTranslatef(32.0f,3.0f,0.0f);
+    glutSolidSphere(0.5,150,150);
+	glRotatef( fanAngle , 0.0f, 0.0f,1.0f);
+
+
+    glBegin(GL_QUADS);// first stand to hold the blade
+    glColor3ub(255,255,0);
+    glVertex2f(0.0f,0.0f);
+    glVertex2f(5.0f,0.0f);
+    glVertex2f(5.0f,0.25f);
+    glVertex2f(0.0f,0.25f);
+    glEnd();
+
+    glBegin(GL_QUADS);// second stand to hold the blade
+    glColor3ub(255,255,0);
+    glVertex2f(0.0f,0.0f);
+    glVertex2f(0.0f,5.0f);
+    glVertex2f(-0.25f,5.0f);
+    glVertex2f(-0.25f,0.0f);
+    glEnd();
+
+    glBegin(GL_QUADS);// third stand to hold the blade
+    glColor3ub(255,255,0);
+    glVertex2f(0.0f,-0.25f);
+    glVertex2f(0.0f,0.0f);
+    glVertex2f(-5.0f,0.0f);
+    glVertex2f(-5.0f,-0.25f);
+    glEnd();
+
+    glBegin(GL_QUADS);// fourth stand to hold the blade
+    glColor3ub(255,255,0);
+    glVertex2f(0.25f,0.0f);
+    glVertex2f(0.0f,0.0f);
+    glVertex2f(0.0f,-5.0f);
+    glVertex2f(0.25f,-5.0f);
+    glEnd();
+
+    glBegin(GL_TRIANGLES);// first triangular blade to hold the blade
+    glColor3ub(128,0,0);
+    glVertex2f(0.25f,0.0f);
+    glVertex2f(5.0f,-2.5f);
+    glVertex2f(5.0f,0.0f);
+    glEnd();
+
+    glBegin(GL_TRIANGLES);// second triangular blade to hold the blade
+    glColor3ub(128,0,0);
+    glVertex2f(0.0f,0.025f);
+    glVertex2f(2.5f,5.0f);
+    glVertex2f(0.0f,5.0f);
+    glEnd();
+
+    glBegin(GL_TRIANGLES);// third triangular blade to hold the blade
+    glColor3ub(128,0,0);
+    glVertex2f(-0.25f,0.0f);
+    glVertex2f(-5.0f,2.5f);
+    glVertex2f(-5.0f,0.0f);
+    glEnd();
+
+    glBegin(GL_TRIANGLES);// fourth triangular blade to hold the blade
+    glColor3ub(128,0,0);
+    glVertex2f(0.0f,-0.025f);
+    glVertex2f(-2.5f,-5.0f);
+    glVertex2f(0.0f,-5.0f);
+    glEnd();
+
+
+
+
+
+
+
+    glPopMatrix();
 }
 
 
@@ -925,7 +1022,7 @@ void front_page()
     }
                 sprintf(text, "PRESS 'd' FOR DAY MODE",5.00,8.00);
     glColor3f(0, 0, 0);
-    glRasterPos2f( -20 , 0 );
+    glRasterPos2f( -20 , 5 );
     for(int i = 0; text[i] != '\0'; i++)
     {
         if(text[i]==' '  && text[i+1]==' ')
@@ -937,7 +1034,7 @@ void front_page()
     }
         sprintf(text, "PRESS 'n' FOR NIGHT MODE",5.00,8.00);
     glColor3f(0, 0, 0);
-    glRasterPos2f( -20 , -5 );
+    glRasterPos2f( -20 , 0 );
     for(int i = 0; text[i] != '\0'; i++)
     {
         if(text[i]==' '  && text[i+1]==' ')
@@ -949,7 +1046,7 @@ void front_page()
     }
     sprintf(text, "PRESS 'f' FOR FRONT WINDOW",5.00,8.00);
     glColor3f(0, 0, 0);
-    glRasterPos2f( -20 , -10 );
+    glRasterPos2f( -20 , -5 );
     for(int i = 0; text[i] != '\0'; i++)
     {
         if(text[i]==' '  && text[i+1]==' ')
@@ -962,7 +1059,7 @@ void front_page()
 
      sprintf(text, "PRESS 'r' FOR SET THE DIRECTION TO RIGHT",5.00,8.00);
     glColor3f(0, 0, 0);
-    glRasterPos2f( -20 , -15 );
+    glRasterPos2f( -20 , -10 );
     for(int i = 0; text[i] != '\0'; i++)
     {
         if(text[i]==' '  && text[i+1]==' ')
@@ -974,7 +1071,7 @@ void front_page()
     }
     sprintf(text, "PRESS 'l' FOR SET THE DIRECTION TO LEFT",5.00,8.00);
     glColor3f(0, 0, 0);
-    glRasterPos2f( -20 , -20 );
+    glRasterPos2f( -20 , -15 );
     for(int i = 0; text[i] != '\0'; i++)
     {
         if(text[i]==' '  && text[i+1]==' ')
@@ -986,7 +1083,7 @@ void front_page()
     }
     sprintf(text, "PRESS '1'(ONE) TO MOVE THE CAR",5.00,8.00);
     glColor3f(0, 0, 0);
-    glRasterPos2f( -20 , -25 );
+    glRasterPos2f( -20 , -20 );
     for(int i = 0; text[i] != '\0'; i++)
     {
         if(text[i]==' '  && text[i+1]==' ')
@@ -998,7 +1095,7 @@ void front_page()
     }
     sprintf(text, "PRESS '2' TO MOVE THE BOAT",5.00,8.00);
     glColor3f(0, 0, 0);
-    glRasterPos2f( -20 , -30 );
+    glRasterPos2f( -20 , -25 );
     for(int i = 0; text[i] != '\0'; i++)
     {
         if(text[i]==' '  && text[i+1]==' ')
@@ -1010,6 +1107,18 @@ void front_page()
     }
     sprintf(text, "PRESS '3' TO MOVE THE CLOUD",5.00,8.00);
     glColor3f(0, 0, 0);
+    glRasterPos2f( -20 , -30 );
+    for(int i = 0; text[i] != '\0'; i++)
+    {
+        if(text[i]==' '  && text[i+1]==' ')
+        {
+            glutBitmapCharacter(GLUT_BITMAP_TIMES_ROMAN_24, text[i]);
+            glRasterPos2f( -32 , 02 );
+        }
+        else glutBitmapCharacter(GLUT_BITMAP_TIMES_ROMAN_24, text[i]);
+    }
+    sprintf(text, "PRESS '4' TO MOVE THE SUN",5.00,8.00);
+    glColor3f(0, 0, 0);
     glRasterPos2f( -20 , -35 );
     for(int i = 0; text[i] != '\0'; i++)
     {
@@ -1020,7 +1129,7 @@ void front_page()
         }
         else glutBitmapCharacter(GLUT_BITMAP_TIMES_ROMAN_24, text[i]);
     }
-    sprintf(text, "PRESS '4' TO MOVE THE SUN/MOVE",5.00,8.00);
+    sprintf(text, "PRESS '5' TO MOVE THE WINDMIL",5.00,8.00);
     glColor3f(0, 0, 0);
     glRasterPos2f( -20 , -40 );
     for(int i = 0; text[i] != '\0'; i++)
@@ -1044,6 +1153,7 @@ void front_page()
         }
         else glutBitmapCharacter(GLUT_BITMAP_TIMES_ROMAN_24, text[i]);
     }
+
 
 
 }
@@ -1152,6 +1262,12 @@ void night(void)
     stars();
     glPopMatrix();
 
+    glPushMatrix();
+    glTranslatef(-10, -5, 0);
+    glScalef(2, 2, 1);
+    windmill();
+    glPopMatrix();
+
 
     glFlush();
     glutSwapBuffers();
@@ -1256,6 +1372,12 @@ void day(void)
     cloud();
     glPopMatrix();
 
+    glPushMatrix();
+    glTranslatef(-10, -5, 0);
+    glScalef(2, 2, 1);
+    windmill();
+    glPopMatrix();
+
 
     glFlush();
     glutSwapBuffers();
@@ -1349,7 +1471,10 @@ void myKeyboardFunc( unsigned char key, int x, int y )
             sunFlag = !sunFlag;
             moveRight = true;
             break;
-
+        case '5':
+            fanFlag = !fanFlag;
+            moveRight = true;
+            break;
 
         case '0':	// Escape key
             exit(1);
@@ -1387,6 +1512,13 @@ void animate()
                 cloudXval = 120;
             }
         }
+        if(fanFlag == true){
+            fanAngle+=2.0f;
+            if(fanAngle > 360.0)
+            {
+                fanAngle =0;
+            }
+        }
 
 
 	}
@@ -1415,6 +1547,13 @@ void animate()
             cloudXval += 0.03;
             if(cloudXval > 120){
                 cloudXval = -80;
+            }
+        }
+        if(fanFlag == true){
+            fanAngle-=2.0f;
+            if(fanAngle < 0)
+            {
+                fanAngle = 360;
             }
         }
 
