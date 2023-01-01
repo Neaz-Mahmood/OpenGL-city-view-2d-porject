@@ -10,7 +10,7 @@ double windowWidth= 2000, windowHeight = 800;
 bool carFlag = false, sunFlag = false, boatFlag = false, cloudFlag = false, fanFlag = false;
 bool moveRight=false, moveLeft = false;
 double carXval = 0, boatXval = 0, cloudXval = 0, sunYval = 0;
-float fanAngle = 0.0f;
+float fanAngle = 0.0f, speed = 0.05;
 
 void drawCircle(double x, double y, double s){
 
@@ -48,14 +48,14 @@ void windmill()
 
      //circle//
     glPushMatrix();
-    glColor3ub(0,0,0);
+    glColor3f(0,0,0);
     glTranslatef(32.0f,3.0f,0.0f);
     glutSolidSphere(0.5,150,150);
 	glRotatef( fanAngle , 0.0f, 0.0f,1.0f);
 
 
     glBegin(GL_QUADS);// first stand to hold the blade
-    glColor3ub(255,255,0);
+    glColor3f(0.840, 0.920, 0.120);
     glVertex2f(0.0f,0.0f);
     glVertex2f(5.0f,0.0f);
     glVertex2f(5.0f,0.25f);
@@ -63,7 +63,7 @@ void windmill()
     glEnd();
 
     glBegin(GL_QUADS);// second stand to hold the blade
-    glColor3ub(255,255,0);
+    glColor3f(0.840, 0.920, 0.120);
     glVertex2f(0.0f,0.0f);
     glVertex2f(0.0f,5.0f);
     glVertex2f(-0.25f,5.0f);
@@ -71,7 +71,7 @@ void windmill()
     glEnd();
 
     glBegin(GL_QUADS);// third stand to hold the blade
-    glColor3ub(255,255,0);
+    glColor3f(0.840, 0.920, 0.120);
     glVertex2f(0.0f,-0.25f);
     glVertex2f(0.0f,0.0f);
     glVertex2f(-5.0f,0.0f);
@@ -79,7 +79,7 @@ void windmill()
     glEnd();
 
     glBegin(GL_QUADS);// fourth stand to hold the blade
-    glColor3ub(255,255,0);
+    glColor3f(0.840, 0.920, 0.120);
     glVertex2f(0.25f,0.0f);
     glVertex2f(0.0f,0.0f);
     glVertex2f(0.0f,-5.0f);
@@ -87,28 +87,124 @@ void windmill()
     glEnd();
 
     glBegin(GL_TRIANGLES);// first triangular blade to hold the blade
-    glColor3ub(128,0,0);
+    glColor3f(0.930, 0.158, 0.673);
     glVertex2f(0.25f,0.0f);
     glVertex2f(5.0f,-2.5f);
     glVertex2f(5.0f,0.0f);
     glEnd();
 
     glBegin(GL_TRIANGLES);// second triangular blade to hold the blade
-    glColor3ub(128,0,0);
+    glColor3f(0.930, 0.158, 0.673);
     glVertex2f(0.0f,0.025f);
     glVertex2f(2.5f,5.0f);
     glVertex2f(0.0f,5.0f);
     glEnd();
 
     glBegin(GL_TRIANGLES);// third triangular blade to hold the blade
-    glColor3ub(128,0,0);
+    glColor3f(0.930, 0.158, 0.673);
     glVertex2f(-0.25f,0.0f);
     glVertex2f(-5.0f,2.5f);
     glVertex2f(-5.0f,0.0f);
     glEnd();
 
     glBegin(GL_TRIANGLES);// fourth triangular blade to hold the blade
-    glColor3ub(128,0,0);
+    glColor3f(0.930, 0.158, 0.673);
+    glVertex2f(0.0f,-0.025f);
+    glVertex2f(-2.5f,-5.0f);
+    glVertex2f(0.0f,-5.0f);
+    glEnd();
+
+
+
+
+
+
+
+    glPopMatrix();
+}
+
+void windmill_night()
+{
+    ///windmill structure///
+    glBegin(GL_POLYGON);// Draw a Red 1x1 Square centered at origin
+    glColor3ub(192,192,192);
+    //glColor3ub(0,206,209);
+
+    glVertex2f(31.0f,2.0f);
+    glVertex2f(30.0f,-6.0f);
+    glVertex2f(34.0f,-6.0f);
+    glVertex2f(33.0f,2.0f);
+    glVertex2f(32.5f,3.0f);
+    glVertex2f(31.5f,3.0f);
+
+
+
+    glEnd();
+
+
+     //circle//
+    glPushMatrix();
+    glColor3f(0,0,0);
+    glTranslatef(32.0f,3.0f,0.0f);
+    glutSolidSphere(0.5,150,150);
+	glRotatef( fanAngle , 0.0f, 0.0f,1.0f);
+
+
+    glBegin(GL_QUADS);// first stand to hold the blade
+    glColor3f(0.840, 0.920, 0.120);
+    glVertex2f(0.0f,0.0f);
+    glVertex2f(5.0f,0.0f);
+    glVertex2f(5.0f,0.25f);
+    glVertex2f(0.0f,0.25f);
+    glEnd();
+
+    glBegin(GL_QUADS);// second stand to hold the blade
+    glColor3f(0.840, 0.920, 0.120);
+    glVertex2f(0.0f,0.0f);
+    glVertex2f(0.0f,5.0f);
+    glVertex2f(-0.25f,5.0f);
+    glVertex2f(-0.25f,0.0f);
+    glEnd();
+
+    glBegin(GL_QUADS);// third stand to hold the blade
+    glColor3f(0.840, 0.920, 0.120);
+    glVertex2f(0.0f,-0.25f);
+    glVertex2f(0.0f,0.0f);
+    glVertex2f(-5.0f,0.0f);
+    glVertex2f(-5.0f,-0.25f);
+    glEnd();
+
+    glBegin(GL_QUADS);// fourth stand to hold the blade
+    glColor3f(0.840, 0.920, 0.120);
+    glVertex2f(0.25f,0.0f);
+    glVertex2f(0.0f,0.0f);
+    glVertex2f(0.0f,-5.0f);
+    glVertex2f(0.25f,-5.0f);
+    glEnd();
+
+    glBegin(GL_TRIANGLES);// first triangular blade to hold the blade
+    glColor3f(0.520, 0.0624, 0.436);
+    glVertex2f(0.25f,0.0f);
+    glVertex2f(5.0f,-2.5f);
+    glVertex2f(5.0f,0.0f);
+    glEnd();
+
+    glBegin(GL_TRIANGLES);// second triangular blade to hold the blade
+    glColor3f(0.520, 0.0624, 0.436);
+    glVertex2f(0.0f,0.025f);
+    glVertex2f(2.5f,5.0f);
+    glVertex2f(0.0f,5.0f);
+    glEnd();
+
+    glBegin(GL_TRIANGLES);// third triangular blade to hold the blade
+    glColor3f(0.520, 0.0624, 0.436);
+    glVertex2f(-0.25f,0.0f);
+    glVertex2f(-5.0f,2.5f);
+    glVertex2f(-5.0f,0.0f);
+    glEnd();
+
+    glBegin(GL_TRIANGLES);// fourth triangular blade to hold the blade
+    glColor3f(0.520, 0.0624, 0.436);
     glVertex2f(0.0f,-0.025f);
     glVertex2f(-2.5f,-5.0f);
     glVertex2f(0.0f,-5.0f);
@@ -1020,7 +1116,7 @@ void front_page()
         }
         else glutBitmapCharacter(GLUT_BITMAP_TIMES_ROMAN_24, text[i]);
     }
-                sprintf(text, "PRESS 'd' FOR DAY MODE",5.00,8.00);
+                sprintf(text, "PRESS 'd' FOR DAY, 'n' FOR NIGHT & 'f' FOR FRONT WINDOW",5.00,8.00);
     glColor3f(0, 0, 0);
     glRasterPos2f( -20 , 5 );
     for(int i = 0; text[i] != '\0'; i++)
@@ -1032,7 +1128,9 @@ void front_page()
         }
         else glutBitmapCharacter(GLUT_BITMAP_TIMES_ROMAN_24, text[i]);
     }
-        sprintf(text, "PRESS 'n' FOR NIGHT MODE",5.00,8.00);
+
+
+     sprintf(text, "PRESS 'r' FOR SET THE DIRECTION TO RIGHT",5.00,8.00);
     glColor3f(0, 0, 0);
     glRasterPos2f( -20 , 0 );
     for(int i = 0; text[i] != '\0'; i++)
@@ -1044,7 +1142,7 @@ void front_page()
         }
         else glutBitmapCharacter(GLUT_BITMAP_TIMES_ROMAN_24, text[i]);
     }
-    sprintf(text, "PRESS 'f' FOR FRONT WINDOW",5.00,8.00);
+    sprintf(text, "PRESS 'l' FOR SET THE DIRECTION TO LEFT",5.00,8.00);
     glColor3f(0, 0, 0);
     glRasterPos2f( -20 , -5 );
     for(int i = 0; text[i] != '\0'; i++)
@@ -1056,8 +1154,7 @@ void front_page()
         }
         else glutBitmapCharacter(GLUT_BITMAP_TIMES_ROMAN_24, text[i]);
     }
-
-     sprintf(text, "PRESS 'r' FOR SET THE DIRECTION TO RIGHT",5.00,8.00);
+    sprintf(text, "PRESS '1'(ONE) TO MOVE/STOP THE CAR",5.00,8.00);
     glColor3f(0, 0, 0);
     glRasterPos2f( -20 , -10 );
     for(int i = 0; text[i] != '\0'; i++)
@@ -1069,7 +1166,7 @@ void front_page()
         }
         else glutBitmapCharacter(GLUT_BITMAP_TIMES_ROMAN_24, text[i]);
     }
-    sprintf(text, "PRESS 'l' FOR SET THE DIRECTION TO LEFT",5.00,8.00);
+    sprintf(text, "PRESS '2' TO MOVE/STOP THE BOAT",5.00,8.00);
     glColor3f(0, 0, 0);
     glRasterPos2f( -20 , -15 );
     for(int i = 0; text[i] != '\0'; i++)
@@ -1081,7 +1178,7 @@ void front_page()
         }
         else glutBitmapCharacter(GLUT_BITMAP_TIMES_ROMAN_24, text[i]);
     }
-    sprintf(text, "PRESS '1'(ONE) TO MOVE THE CAR",5.00,8.00);
+    sprintf(text, "PRESS '3' TO MOVE/STOP THE CLOUD",5.00,8.00);
     glColor3f(0, 0, 0);
     glRasterPos2f( -20 , -20 );
     for(int i = 0; text[i] != '\0'; i++)
@@ -1093,7 +1190,7 @@ void front_page()
         }
         else glutBitmapCharacter(GLUT_BITMAP_TIMES_ROMAN_24, text[i]);
     }
-    sprintf(text, "PRESS '2' TO MOVE THE BOAT",5.00,8.00);
+    sprintf(text, "PRESS '4' TO MOVE/STOP THE SUN/MOON",5.00,8.00);
     glColor3f(0, 0, 0);
     glRasterPos2f( -20 , -25 );
     for(int i = 0; text[i] != '\0'; i++)
@@ -1105,7 +1202,7 @@ void front_page()
         }
         else glutBitmapCharacter(GLUT_BITMAP_TIMES_ROMAN_24, text[i]);
     }
-    sprintf(text, "PRESS '3' TO MOVE THE CLOUD",5.00,8.00);
+    sprintf(text, "PRESS '5' TO MOVE/STOP THE WINDMIL",5.00,8.00);
     glColor3f(0, 0, 0);
     glRasterPos2f( -20 , -30 );
     for(int i = 0; text[i] != '\0'; i++)
@@ -1117,7 +1214,7 @@ void front_page()
         }
         else glutBitmapCharacter(GLUT_BITMAP_TIMES_ROMAN_24, text[i]);
     }
-    sprintf(text, "PRESS '4' TO MOVE THE SUN",5.00,8.00);
+    sprintf(text, "PRESS '6' TO INCREASE SPEED",5.00,8.00);
     glColor3f(0, 0, 0);
     glRasterPos2f( -20 , -35 );
     for(int i = 0; text[i] != '\0'; i++)
@@ -1129,7 +1226,7 @@ void front_page()
         }
         else glutBitmapCharacter(GLUT_BITMAP_TIMES_ROMAN_24, text[i]);
     }
-    sprintf(text, "PRESS '5' TO MOVE THE WINDMIL",5.00,8.00);
+    sprintf(text, "PRESS '7' TO DECREASE SPEED",5.00,8.00);
     glColor3f(0, 0, 0);
     glRasterPos2f( -20 , -40 );
     for(int i = 0; text[i] != '\0'; i++)
@@ -1265,7 +1362,7 @@ void night(void)
     glPushMatrix();
     glTranslatef(-10, -5, 0);
     glScalef(2, 2, 1);
-    windmill();
+    windmill_night();
     glPopMatrix();
 
 
@@ -1475,6 +1572,13 @@ void myKeyboardFunc( unsigned char key, int x, int y )
             fanFlag = !fanFlag;
             moveRight = true;
             break;
+        case '6':
+            speed+=0.05;
+            break;
+        case '7':
+            speed-=0.05;
+            break;
+
 
         case '0':	// Escape key
             exit(1);
@@ -1488,32 +1592,32 @@ void animate()
 	if (moveLeft == true)
 	{
 	    if(carFlag == true){
-            carXval-=0.05;
+            carXval-=speed;
             if(carXval < -100){
             carXval = 50;
             }
 	    }
 		if(boatFlag == true){
-            boatXval -= 0.05;
+            boatXval -= speed;
             if(boatXval < -100){
                 boatXval = 90;
             }
 		}
         if(sunFlag == true){
-            sunYval -= 0.02;
+            sunYval -= speed;
             if(sunYval < -50){
                 sunYval = 20;
             }
         }
 
         if(cloudFlag == true){
-            cloudXval -= 0.03;
+            cloudXval -= speed;
             if(cloudXval < -80){
                 cloudXval = 120;
             }
         }
         if(fanFlag == true){
-            fanAngle+=2.0f;
+            fanAngle+=speed;
             if(fanAngle > 360.0)
             {
                 fanAngle =0;
@@ -1525,32 +1629,32 @@ void animate()
 	if (moveRight == true)
 	{
 	    if(carFlag == true){
-            carXval+=0.05;
+            carXval+=speed;
             if(carXval > 50){
                 carXval = -100;
             }
 	    }
 		if(boatFlag == true){
-            boatXval += 0.05;
+            boatXval += speed;
             if(boatXval > 90){
                 boatXval = -100;
             }
 		}
 
         if(sunFlag == true){
-            sunYval += 0.02;
+            sunYval += speed;
             if(sunYval > 20){
                 sunYval = -50;
             }
         }
         if(cloudFlag == true){
-            cloudXval += 0.03;
+            cloudXval += speed;
             if(cloudXval > 120){
                 cloudXval = -80;
             }
         }
         if(fanFlag == true){
-            fanAngle-=2.0f;
+            fanAngle-=speed;
             if(fanAngle < 0)
             {
                 fanAngle = 360;
